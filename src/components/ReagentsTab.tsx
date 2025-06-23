@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { AddEditReagentModal } from '@/components/AddEditReagentModal';
@@ -61,68 +60,55 @@ export const ReagentsTab = ({ instrument }: ReagentsTabProps) => {
 
   return (
     <div>
-      <div className="px-6 py-4 border-b border-gray-200">
+      <div className="px-8 py-4 border-b border-gray-200 bg-white rounded-t-lg">
         <div className="flex justify-end">
           <Button 
-            className="bg-blue-600 hover:bg-blue-700"
+            className="bg-status-green hover:bg-green-700 text-white font-semibold rounded-md px-6 py-2 shadow"
             onClick={() => setShowAddModal(true)}
           >
             Add Reagent
           </Button>
         </div>
       </div>
-
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead className="bg-gray-50">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Reagent Name
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Instrument Test Code
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Lab Test Code
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Mapped Parameters
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Actions
-              </th>
+              <th className="px-8 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Reagent Name</th>
+              <th className="px-8 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Instrument Test Code</th>
+              <th className="px-8 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Lab Test Code</th>
+              <th className="px-8 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Mapped Parameters</th>
+              <th className="px-8 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Actions</th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
             {reagents.map((reagent) => (
-              <tr key={reagent.id} className="hover:bg-gray-50">
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                  {reagent.name}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                  {reagent.instrumentTestCode}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                  {reagent.labTestCode}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="flex flex-wrap gap-1">
+              <tr
+                key={reagent.id}
+                className="hover:bg-gray-50 transition-colors cursor-pointer group"
+                onClick={() => handleEdit(reagent)}
+              >
+                <td className="px-8 py-4 whitespace-nowrap text-base font-medium text-gray-900">{reagent.name}</td>
+                <td className="px-8 py-4 whitespace-nowrap text-base text-gray-900">{reagent.instrumentTestCode}</td>
+                <td className="px-8 py-4 whitespace-nowrap text-base text-gray-900">{reagent.labTestCode}</td>
+                <td className="px-8 py-4 whitespace-nowrap">
+                  <div className="flex flex-wrap gap-2">
                     {reagent.mappedParameters.map((param) => (
                       <span
                         key={param}
-                        className="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-blue-100 text-blue-800"
+                        className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-status-green text-white border border-status-green shadow-sm"
                       >
                         {param}
                       </span>
                     ))}
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="px-8 py-4 whitespace-nowrap" onClick={e => e.stopPropagation()}>
                   <div className="flex space-x-2">
                     <Button 
                       variant="outline" 
                       size="sm"
-                      className="text-blue-600 border-blue-600 hover:bg-blue-50"
+                      className="text-status-green border-status-green border-2 rounded-md font-semibold px-4 py-1 hover:bg-status-green hover:text-white transition-colors shadow-sm"
                       onClick={() => handleEdit(reagent)}
                     >
                       Edit
@@ -130,7 +116,7 @@ export const ReagentsTab = ({ instrument }: ReagentsTabProps) => {
                     <Button 
                       variant="outline" 
                       size="sm"
-                      className="text-red-600 border-red-600 hover:bg-red-50"
+                      className="text-status-red border-status-red border-2 rounded-md font-semibold px-4 py-1 hover:bg-status-red hover:text-white transition-colors shadow-sm"
                       onClick={() => handleDelete(reagent.id)}
                     >
                       Delete

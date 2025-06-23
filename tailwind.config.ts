@@ -53,15 +53,24 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
+					DEFAULT: '#23272E',
 					foreground: 'hsl(var(--sidebar-foreground))',
 					primary: 'hsl(var(--sidebar-primary))',
 					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
 					accent: 'hsl(var(--sidebar-accent))',
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				}
+					border: '#2C313A',
+					ring: 'hsl(var(--sidebar-ring))',
+					active: '#1A1D22',
+				},
+				header: {
+					DEFAULT: '#181A1B',
+				},
+				status: {
+					green: '#3BB662',
+					red: '#E14C4C',
+					yellow: '#F6C244',
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -89,7 +98,11 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+			},
+			fontFamily: {
+				sans: ['Inter', 'system-ui', 'sans-serif'],
+				mono: ['Fira Mono', 'Menlo', 'monospace'],
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],

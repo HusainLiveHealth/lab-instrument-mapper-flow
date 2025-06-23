@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { StatusPill } from '@/components/StatusPill';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -105,14 +104,13 @@ export const TestMappingScreen = ({ instrument, onTestClick, onBack }: TestMappi
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {mockTests.map((test) => (
-                  <tr key={test.id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <button
-                        onClick={() => onTestClick(test)}
-                        className="text-blue-600 hover:text-blue-800 font-medium text-left"
-                      >
-                        {test.name}
-                      </button>
+                  <tr
+                    key={test.id}
+                    className="hover:bg-gray-50 transition-colors cursor-pointer group"
+                    onClick={() => onTestClick(test)}
+                  >
+                    <td className="px-6 py-4 whitespace-nowrap text-blue-700 font-medium group-hover:underline">
+                      {test.name}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                       {test.code}
@@ -135,7 +133,7 @@ export const TestMappingScreen = ({ instrument, onTestClick, onBack }: TestMappi
                          test.status === 'partial' ? 'Partial' : 'Error'}
                       </StatusPill>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-4 whitespace-nowrap" onClick={e => e.stopPropagation()}>
                       <Button variant="outline" size="sm" className="text-blue-600 border-blue-600 hover:bg-blue-50">
                         Edit
                       </Button>
