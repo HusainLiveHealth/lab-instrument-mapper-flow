@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { InstrumentList } from '@/components/InstrumentList';
 import { TestMappingScreen } from '@/components/TestMappingScreen';
@@ -33,6 +32,16 @@ export interface Parameter {
   code: string;
   serverName: string;
   status: 'connected' | 'partial';
+  mappedReagents?: string[];
+}
+
+export interface Reagent {
+  id: string;
+  name: string;
+  instrumentTestCode: string;
+  labTestCode: string;
+  mappedParameters: string[];
+  instrumentId: string;
 }
 
 const Index = () => {
